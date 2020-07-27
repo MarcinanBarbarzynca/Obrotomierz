@@ -9,7 +9,7 @@ const int analogInPin = A3; //Ten pin jest czasem używany do debugowania
 int input = 2;
 volatile unsigned long czas = 0;
 volatile unsigned long T = 0;
-
+int state = 0;//Zmienna potrzebna do loopa
 void funkcja_przerwania() {
   licznik++;
   HZ=1/(float(millis()-T)*1000);
@@ -45,13 +45,13 @@ void setup() {
 void loop() {
   state = digitalRead(input);
   if (state == 1) {
-    lcd.setCursor(11, 0);
-    lcd.print("DREWN");
+    lcd.setCursor(16, 1);
+    lcd.print("#");
   } else {
-    lcd.setCursor(11, 0);
-    lcd.print("METAL");
+    lcd.setCursor(16, 1);
+    lcd.print("-");
   }
-  lcd.setCursor(11, 1);
+  lcd.setCursor(11, 0);
   lcd.print(licznik);
   if (millis() - czas > 1000) {
     czas = millis();
