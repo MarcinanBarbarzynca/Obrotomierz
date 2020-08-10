@@ -12,7 +12,7 @@ volatile unsigned long T = 0;
 int state = 0;//Zmienna potrzebna do loopa
 void funkcja_przerwania() {
   licznik++;
-  HZ=1/(float(millis()-T)*1000);
+  HZ=1000/(float(millis()-T));
   T = millis();
 }
 void wypisz_HZ() {
